@@ -1,0 +1,45 @@
+﻿<div ng-controller="app.views.books as bm">
+    <div class="row">
+        <div class="col-md-12">
+            <p class="my-subtitle">Katalog książek</p>
+        </div>
+    </div>
+    <div class="container">
+        <ul class="nav nav-pills nav-justified">
+            <li class="active"><a ng-click="bm.refreshBooks()" href="#">Wszystkie</a></li>
+            <li><a ng-click="bm.getBooksType(1)" href="#">Audiobooki</a></li>
+            <li><a ng-click="bm.getBooksType(2)" href="#">E-booki</a></li>
+            <li><a ng-click="bm.getBooksNew(14)" href="#">Nowości</a></li>
+            <li><a ng-click="bm.getBooksPreview(14)" href="#">Zapowiedzi</a></li>
+            <li><a ng-click="bm.getBooksSpecial()" href="">Super Okazja</a></li>
+        </ul>
+    </div>
+    <div class="container" id="table">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nazwa</th>
+                            <th>Data wydania</th>
+                            <th>Cena</th>
+                            <th>Autor</th>
+                            <th>Wydawnictwo</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="book in bm.books | orderBy:'name'">
+                            <td>{{book.name}}</td>
+                            <td>{{book.releaseDate | date: "dd.MM.yyyy" }}</td>
+                            <td>{{book.price | currency:""}}</td>
+                            <td>{{book.authorName}}</td>
+                            <td>{{book.publishingHauseName}}</td>
+                            <td><a ng-click="bm.addToShoppingCart()" href="#">do koszyka</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

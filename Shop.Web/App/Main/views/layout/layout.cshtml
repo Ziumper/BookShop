@@ -1,0 +1,87 @@
+﻿@using System.Threading
+@using System.Web.Optimization
+@using Abp.Timing
+@{
+    SetAntiForgeryCookie();
+}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Księgarnia z e-bookami oraz z audiobookami">
+    <meta name="author" content="Tomasz Komoszeski">
+
+    <title>Księgarnia Internetowa</title>
+    <link rel="Shortcut icon" href="~/myIcon.ico" />
+    @Styles.Render("~/Bundles/App/vendor/css")
+    <link rel="stylesheet" href="~/App/Main/style.css" />
+   
+</head>
+<body>
+    <!-- HEADER OF THE PAGE-->
+    <div ng-app="app" ng-controller="app.views.layout as vm">
+        <header>
+            <div class="container-fluid my-header">
+                <div class="row vcenter">
+                    <!--MAIN ROW-->
+                    <div class="col-md-4">
+                        <h1>Księgarnia<br><small>Nasze sklepy prowadzimy z pasją!</small></h1>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <label class="col-md-4" for="searchItem">Wyszukiwarka</label>
+                            <input class="my-input col-md-6" ng-model="searchContent" ng-pattern="vm.myRegex" type="search" id="searchItem" />
+                            <div class="col-md-2">
+                                <button ng-click="vm.search()" class="btn btn-sm" type="submit">Szukaj</button>
+                            </div>
+                            
+                        </div>
+                       
+                    </div>
+                    <div class="col-md-4">
+                        <!-- COLUMN IN-->
+                        <div class="row vcenter">
+                            <div class="col-md-4">
+                                <p>Twój koszyk</p>
+                            </div>
+                            <div class="col-md-8 my-box">
+                                <!--MY BOX-->
+                                <p>Liczba produktów:</p>
+                                <p>{{vm.count}}</p>
+                            </div>
+                        </div>
+                    </div><!-- END COLUMN IN-->
+                </div> <!--END MAIN ROW-->
+            </div>
+        </header>
+        <!--END HEADER-->
+        <!--MAIN CONTENT-->
+        <div class="container">
+            <div class="angular-animation-container row">
+                <div ui-view class="shuffle-animation col-xs-12"></div>
+            </div>
+       </div>
+    </div>
+ 
+      
+    <!--END MAIN CONTENT-->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="@Url.Content("~/Scripts/others/html5shiv.js")"></script>
+        <script src="@Url.Content("~/Scripts/others/respond.min.js")"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+        //This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {}; abp.appPath = '@ApplicationPath';
+    </script>
+    @Scripts.Render("~/Bundles/App/vendor/js")
+    @Scripts.Render("~/Bundles/App/Main/js")
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="~/api/AbpServiceProxies/GetAll?v=@(Clock.Now.Ticks)"></script>
+    <script src="~/api/AbpServiceProxies/GetAll?type=angular&v=@(Clock.Now.Ticks)"></script>
+    <script src="~/AbpScripts/GetScripts?v=@(Clock.Now.Ticks)" type="text/javascript"></script>
+</body>
+</html>

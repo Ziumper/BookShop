@@ -1,0 +1,129 @@
+﻿.my-header
+{
+    border-bottom: solid 1px #000000;
+}
+.my-box
+{
+    border: solid 2px #000000;
+    padding: 15px;
+    margin-right: 20px;
+}
+.my-box p
+{
+    display: inline;
+}
+
+.my-input
+{
+    border-radius:10px;
+}
+
+.btn
+{
+    border: 1px solid black !important;
+    background-color:white !important;
+}
+
+.my-subtitle{
+    font-weight: bold;
+    font-size: large;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+
+.nav>li>a:hover,
+.nav>li>a:focus,
+.nav>li>a,
+.nav-pills>li.active>a
+{
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    color: #000000;
+    font-weight: bold;
+}
+
+.nav>li>a
+{
+    border: solid 1px #000000;
+    border-bottom: none;
+}
+
+.table {
+  border: 1px solid #000000;
+}
+
+.table-striped > thead > tr > th,
+.table-striped > tbody > tr > th,
+.table-striped > tfoot > tr > th,
+.table-striped > thead > tr > td,
+.table-striped > tbody > tr > td,
+.table-striped > tfoot > tr > td {
+   border-left: 1px solid #000000;
+   border-right: 1px solid #000000;
+}
+
+.table-striped > thead > tr > th
+{
+    border-bottom: 1px solid #000000;
+    background-color: whitesmoke;
+}
+
+.table-striped > tbody > tr > td > a
+{
+    text-decoration: none;
+    color: black;
+}
+
+.vcenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.table-bordered > tbody > tr > td < a
+{
+    text-decoration: none;
+    color:#000000;
+}
+
+/* Styles for angular ui transition animations */
+
+.angular-animation-container {
+    position: relative;
+}
+
+.shuffle-animation.ng-enter,
+.shuffle-animation.ng-leave {
+    position: absolute;
+}
+
+.shuffle-animation.ng-enter {
+    -moz-transition: ease-out all 0.3s 0.4s;
+    -o-transition: ease-out all 0.3s 0.4s;
+    -webkit-transition: ease-out all 0.3s 0.4s;
+    transition: ease-out all 0.3s 0.4s;
+    left: 2em;
+    opacity: 0;
+
+    &.ng-enter-active {
+        left: 0;
+        opacity: 1;
+    }
+}
+
+.shuffle-animation.ng-leave {
+    -moz-transition: 0.3s ease-out all;
+    -o-transition: 0.3s ease-out all;
+    -webkit-transition: 0.3s ease-out all;
+    transition: 0.3s ease-out all;
+    left: 0;
+    opacity: 1;
+
+    &.ng-leave-active {
+        left: 2em;
+        opacity: 0;
+    }
+}

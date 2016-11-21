@@ -1,0 +1,53 @@
+﻿<form name="addToShoppingCartForm" role="form" novalidate form-validation">
+    <div class="modal-header">
+        
+            <span> Dodaj do koszyka</span>
+
+            <button type="button" class="close" ng-click="vm.cancel()" >&times;</button>
+        
+    </div>
+    <div class="modal-body">
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label"  for="covers">Okładka</label>
+                <select class="col-xs-5"  id="covers" name="coverSelect" ng-model="cover.id" ng-options="cover.id as cover.name for cover in vm.covers" required>
+                    <option value=""> -- Wybierz -- </option>
+                </select>
+                <div class="col-xs-4" ng-show="addToShoppingCartForm.$submitted && addToShoppingCartForm.coverSelect.$invalid">Wybierz okładkę</div>
+        </div>
+        <div class="form-group form-inline row">
+            <label class="col-xs-3" for="publishingHauses">Wydawnictwo</label>
+            <select class="col-xs-5" id="publishingHauses" name="publishingHauseSelect" ng-model="publishingHause.id" ng-options="publishingHause.id as publishingHause.name for publishingHause in vm.publishingHauses" required>
+                <option value=""> -- Wybierz -- </option>
+            </select>
+            <div class="col-xs-4" ng-show="addToShoppingCartForm.$submitted && addToShoppingCartForm.publishingHauseSelect.$invalid">Wybierz wydawnictwo</div>
+        </div>
+        <div class="form-group form-inline row" >
+            <label class="col-xs-3" for="editions">Wydanie</label>
+            <select  class="col-xs-5" id="editions" name="edition" ng-model="edition.id" required>
+                <option value=""> -- Wybierz -- </option>
+                <option value="edition.release" ng-repeat="edition in vm.editions">{{edition.release | date: "yyyy" }}</option>
+            </select>
+            <div class="col-xs-4">
+                <span>rok</span>
+                <span ng-show="addToShoppingCartForm.$submitted && addToShoppingCartForm.edition.$invalid">Wybierz wydanie</span>
+            </div>
+            
+        </div>
+        <div class="form-group form-inline row">
+            <label class="col-xs-3" for="carriers">Nośnik</label>
+            <select class="col-xs-5" id="carriers" name="carrierSelect" ng-model="carrier.id" ng-options="carrier.id as carrier.name for carrier in vm.carriers" required>
+                <option value=""> -- Wybierz -- </option>
+            </select>
+            <div class="col-xs-4" ng-show="addToShoppingCartForm.$submitted && addToShoppingCartForm.carrierSelect.$invalid">Wybierz nośnik</div>
+        </div>
+        <div class="form-group form-inline row">
+            <label class="col-xs-3" for="counter">Ilość</label>
+            <input class="col-xs-5" type="text" id="counter" name="count" ng-model="countModel" ng-pattern="vm.myRegeExp"  required>
+            <div class="col-xs-4" ng-show="addToShoppingCartForm.$submitted && addToShoppingCartForm.count.$invalid">Wprowadź odpowiednią ilość</div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-sm" ng-click="vm.cancel()">Anuluj</button>
+        <button type="submit" class="btn btn-sm" ng-click="vm.add(addToShoppingCartForm)">Ok</button>
+    </div>
+</form>
